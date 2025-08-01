@@ -19,10 +19,10 @@ RUN apk update && apk add --no-cache \
     gem install bundler && \
     bundle version
 
-# Setup Java
+# Java
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 
-# Install Gradle
+# Gradle
 ENV GRADLE_VERSION=8.10
 ENV PATH=$PATH:/usr/local/gradle-${GRADLE_VERSION}/bin
 RUN URL=https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip && \
@@ -30,7 +30,7 @@ RUN URL=https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.z
 	unzip -d /usr/local /tmp/gradle.zip && \
 	rm -rf /tmp/gradle.zip
 
-# Install Android SDK Tools
+# Android SDK Tools
 ENV ANDROID_HOME=/opt/android
 ENV ANDROID_SDK_ROOT=$ANDROID_HOME
 ENV CMDLINE_TOOLS_ROOT=${ANDROID_HOME}/cmdline-tools/latest/bin
@@ -61,7 +61,7 @@ RUN echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "extras;android;m2repository" && \
 	echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "extras;google;m2repository" && \
 	echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "extras;google;google_play_services"
 
-# Install NDK
+# NDK
 ENV NDK_VERSION=26.1.10909125
 ENV CMAKE_VERSION=3.22.1
 
@@ -73,7 +73,12 @@ ENV PATH=${ANDROID_NDK_HOME}:${CMAKE_BIN_PATH}:${PATH}
 RUN echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "cmake;${CMAKE_VERSION}" && \
     echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "ndk;${NDK_VERSION}"
 
-# Install extra packages
+# Fastlane
+# https://docs.fastlane.tools/getting-started/ios/setup/#set-up-environment-variables
+ENV LC_ALL=en_US
+ENV LANG=en_US.UTF-8
 RUN gem install fastlane --version 2.228.0 --no-document
+
+# Infisical
 RUN curl -1sLf https://dl.cloudsmith.io/public/infisical/infisical-cli/setup.alpine.sh | bash && \
     apk add --no-cache infisical
