@@ -9,6 +9,7 @@ RUN apk update && apk add --no-cache \
         curl \
         wget \
         unzip \
+        python3 \
         build-base \
         openjdk17-jdk \
         ruby-full \
