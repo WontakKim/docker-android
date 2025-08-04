@@ -44,7 +44,7 @@ ENV ADB_INSTALL_TIMEOUT=10
 ENV PATH=${ANDROID_HOME}/emulator:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/platform-tools/bin:${PATH}
 
 # You can find the latest command line tools here: https://developer.android.com/studio#command-line-tools-only
-RUN SDK_TOOLS_URL="https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip" && \
+RUN SDK_TOOLS_URL="https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip" && \
 	mkdir -p ${ANDROID_HOME}/cmdline-tools && \
 	mkdir ${ANDROID_HOME}/platforms && \
 	mkdir ${ANDROID_HOME}/ndk && \
