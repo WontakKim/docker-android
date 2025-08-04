@@ -55,7 +55,11 @@ RUN SDK_TOOLS_URL="https://dl.google.com/android/repository/commandlinetools-lin
 
 RUN echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "platform-tools" && \
     echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" && \
-    echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "platforms;android-${ANDROID_BUILD_VERSION}"
+    echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "platforms;android-${ANDROID_BUILD_VERSION}" && \
+    echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "build-tools;35.0.1" && \
+    echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "build-tools;36.0.0" && \
+    echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "platforms;android-35" && \
+    echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "platforms;android-36"
 
 # Install some useful packages
 RUN echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "extras;android;m2repository" && \
