@@ -57,6 +57,7 @@ RUN [[ $(uname -m) == "x86_64" ]] && ARCH="x64" || ARCH="arm64" && \
     tar -xJf /tmp/node.tar.xz -C /usr/local --strip-components=1 && \
     rm /tmp/node.tar.xz && \
     ln -s /usr/local/bin/node /usr/local/bin/nodejs
+RUN npm install -g npm-cli-login
 
 # configure android
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
