@@ -107,3 +107,6 @@ RUN curl -1sLf 'https://artifacts-cli.infisical.com/setup.deb.sh' | sudo -E bash
 
 # remove apt caches
 RUN rm -rf /var/lib/apt/lists/*
+
+# opt-out of the new security feature, not needed in a CI environment
+RUN git config --global --add safe.directory '*'
