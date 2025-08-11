@@ -94,7 +94,9 @@ RUN echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "platform-tools" && \
     echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "platforms;android-36"
 
 RUN echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "cmake;${CMAKE_VERSION}" && \
-    echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "ndk;${NDK_VERSION}"
+    echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "ndk;${NDK_VERSION}" && \
+    # react-native-skia
+    echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "ndk;27.0.12077973"
 
 # # install some useful packages
 RUN echo y | ${CMDLINE_TOOLS_ROOT}/sdkmanager "extras;android;m2repository" && \
